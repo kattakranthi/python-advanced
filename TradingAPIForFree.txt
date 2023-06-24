@@ -9,3 +9,5 @@ Alpha Vantage API: Alpha Vantage offers a free API that provides access to histo
 IEX Cloud API: IEX Cloud offers a free tier of their API, which provides access to market data, stock quotes, historical data, and more. They have both real-time and delayed data options available.
 
 Polygon API: Polygon.io provides a free tier of their API, offering access to real-time and historic market data for stocks, cryptocurrencies, and forex. They offer RESTful endpoints for retrieving data and have a wide range of features.
+
+Consume Alpha Vantage API through Rest APIs. Show the data in plots using MatPlotLib.
