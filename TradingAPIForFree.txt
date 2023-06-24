@@ -1,0 +1,11 @@
+We can get Free Trading API from below. We will try parse each trading API and will extend the features from each of the API.
+
+Alpaca API: Alpaca provides commission-free stock trading API access with a free tier. Their API offers real-time market data, account information, order placement, and more.
+
+TD Ameritrade API: TD Ameritrade offers a comprehensive API that provides access to their brokerage services, including market data, account information, and trading functionality. They have a free tier available, but it's worth noting that they may require a funded TD Ameritrade account for full access.
+
+Alpha Vantage API: Alpha Vantage offers a free API that provides access to historical and real-time stock market data. Their API supports various technical indicators and can be used to retrieve time series data for stocks, cryptocurrencies, and more.
+
+IEX Cloud API: IEX Cloud offers a free tier of their API, which provides access to market data, stock quotes, historical data, and more. They have both real-time and delayed data options available.
+
+Polygon API: Polygon.io provides a free tier of their API, offering access to real-time and historic market data for stocks, cryptocurrencies, and forex. They offer RESTful endpoints for retrieving data and have a wide range of features.
