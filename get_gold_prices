@@ -1,0 +1,11 @@
+//Get the gold prices from Yahoo Finance library for start date 2020-01-1 and end date 2022-12-31
+import yfinance as yf
+
+# Define the ticker symbol for gold
+gold_ticker = "GC=F"
+
+# Fetch historical gold prices
+gold_data = yf.download(gold_ticker, start="2020-01-01", end="2022-12-31")
+
+# Print the historical gold prices
+print(gold_data)
