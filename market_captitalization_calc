@@ -1,0 +1,11 @@
+#To calculate market capitalization we need two factors today's stock and prices and stocks
+def calculate_market_capitalization(stock_price, outstanding_shares):
+    market_cap = stock_price * outstanding_shares
+    return market_cap
+
+# Example usage
+stock_price = 100.0  # Replace with the current stock price
+outstanding_shares = 10_000_000  # Replace with the number of outstanding shares
+
+market_capitalization = calculate_market_capitalization(stock_price, outstanding_shares)
+print(f"The market capitalization is ${market_capitalization:.2f}")
