@@ -1,0 +1,14 @@
+from pyspark.sql import SparkSession
+
+# Create SparkSession
+spark = SparkSession.builder.getOrCreate()
+
+# Load employee and department DataFrames
+employee_df = spark.read.csv('employee.csv', header=True, inferSchema=True)
+department_df = spark.read.csv('department.csv', header=True, inferSchema=True)
+
+# Perform inner join based on department ID
+joined_df = employee_df.join(department_df, employee_df['department_id'] == department_df['department_id'], 'inner')
+
+# Display the joined DataFrame
+joined_df.show()
