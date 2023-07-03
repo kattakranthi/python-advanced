@@ -1,0 +1,35 @@
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import *
+
+# Create SparkSession
+spark = SparkSession.builder.getOrCreate()
+
+# Load employee DataFrame
+employee_df = spark.read.csv('employee.csv', header=True, inferSchema=True)
+
+# Display the employee DataFrame
+employee_df.show()
+
+# Count the number of employees
+employee_count = employee_df.count()
+print("Employee Count:", employee_count)
+
+# Calculate the average salary
+average_salary = employee_df.select(avg('salary')).first()[0]
+print("Average Salary:", average_salary)
+
+# Calculate the maximum salary
+max_salary = employee_df.select(max('salary')).first()[0]
+print("Maximum Salary:", max_salary)
+
+# Calculate the minimum salary
+min_salary = employee_df.select(min('salary')).first()[0]
+print("Minimum Salary:", min_salary)
+
+# Calculate the sum of salaries
+total_salary = employee_df.select(sum('salary')).first()[0]
+print("Total Salary:", total_salary)
+
+# Group by department and calculate the average salary
+avg_salary_by_department = employee_df.groupBy('department').agg(avg('salary'))
+avg_salary_by_department.show()
