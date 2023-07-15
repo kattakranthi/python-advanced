@@ -1,5 +1,5 @@
 from pyspark.sql import SparkSession
-
+import pandas as pd 
 # Create SparkSession
 spark = SparkSession.builder.getOrCreate()
 
@@ -12,3 +12,9 @@ joined_df = employee_df.join(department_df, employee_df['department_id'] == depa
 
 # Display the joined DataFrame
 joined_df.show()
+
+//Join using pandas
+employee_df_pandas = pd.read_csv('employee.csv')
+department_df_pandas = pd.read_csv('department.csv')
+
+//Merge pandas with inner join
