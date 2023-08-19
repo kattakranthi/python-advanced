@@ -1,0 +1,21 @@
+import pandas as pd
+
+# Sample data for demonstration
+data1 = {'ID': [1, 2, 3, 4],
+         'Value1': [10, 20, 30, 40]}
+data2 = {'ID': [2, 3, 4, 5],
+         'Value2': [200, 300, 400, 500]}
+
+# Create dataframes
+df1 = pd.DataFrame(data1)
+df2 = pd.DataFrame(data2)
+
+# Perform inner merge
+merged_inner = pd.merge(df1, df2, on='ID', how='inner')
+
+print("DataFrame 1:")
+print(df1)
+print("\nDataFrame 2:")
+print(df2)
+print("\nMerged DataFrame (Inner Join):")
+print(merged_inner)
