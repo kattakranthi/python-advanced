@@ -1,0 +1,41 @@
+import requests
+
+# OAuth credentials
+client_id = "your_client_id"
+client_secret = "your_client_secret"
+redirect_uri = "your_redirect_uri"
+authorization_url = "https://api.trade-provider.com/oauth/authorize"
+token_url = "https://api.trade-provider.com/oauth/token"
+
+# Step 1: Redirect user to authorization URL to obtain authorization code
+authorization_payload = {
+    "client_id": client_id,
+    "redirect_uri": redirect_uri,
+    "response_type": "code"
+}
+
+authorization_response = requests.get(authorization_url, params=authorization_payload)
+authorization_code = "extract authorization code from the response URL"
+
+# Step 2: Exchange authorization code for access token
+token_payload = {
+    "client_id": client_id,
+    "client_secret": client_secret,
+    "redirect_uri": redirect_uri,
+    "grant_type": "authorization_code",
+    "code": authorization_code
+}
+
+token_response = requests.post(token_url, data=token_payload)
+access_token = token_response.json()["access_token"]
+
+# API request headers
+headers = {
+    "Authorization": f"Bearer {access_token}"
+}
+
+# Make a trade API request
+api_endpoint = "https://api.trade-provider.com/v1/trades"
+api_response = requests.get(api_endpoint, headers=headers)
+
+print(api_response.json())
