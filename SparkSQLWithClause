@@ -1,0 +1,35 @@
+from pyspark.sql import SparkSession
+
+# Create a SparkSession
+spark = SparkSession.builder \
+    .appName("SparkWithClauseExample") \
+    .getOrCreate()
+
+# Sample data
+data = [("Alice", "Engineering", 5000),
+        ("Bob", "Engineering", 6000),
+        ("Eve", "HR", 4000),
+        ("Alex", "HR", 4500)]
+
+# Create a DataFrame from the sample data
+columns = ["name", "department", "salary"]
+df = spark.createDataFrame(data, columns)
+
+# Register the DataFrame as a temporary view
+df.createOrReplaceTempView("employee")
+
+# Use the WITH clause to create temporary views for the desired aggregations
+spark.sql("""
+    WITH avg_salary_by_department AS (
+        SELECT department, AVG(salary) AS avg_salary
+        FROM employee
+        GROUP BY department
+    ),
+    avg_salary_female AS (
+        SELECT AVG(salary) AS avg_salary
+        FROM employee
+        WHERE gender = 'Female'
+    )
+    SELECT *
+    FROM avg_salary_by_department, avg_salary_female
+""").show()
