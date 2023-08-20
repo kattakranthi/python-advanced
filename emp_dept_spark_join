@@ -17,4 +17,34 @@ joined_df.show()
 employee_df_pandas = pd.read_csv('employee.csv')
 department_df_pandas = pd.read_csv('department.csv')
 
-//Merge pandas with inner join
+
+# Create DataFrames
+data1 = [(1, "Alice"), (2, "Bob"), (3, "Charlie")]
+data2 = [(1, "Engineer"), (2, "Manager"), (4, "Director")]
+
+columns1 = ["id", "name"]
+columns2 = ["id", "role"]
+
+df1 = spark.createDataFrame(data1, columns1)
+df2 = spark.createDataFrame(data2, columns2)
+
+# Show DataFrames
+print("DataFrame 1:")
+df1.show()
+
+print("DataFrame 2:")
+df2.show()
+
+# Left Join
+left_join_result = df1.join(df2, on="id", how="left")
+print("Left Join Result:")
+left_join_result.show()
+
+# Right Join
+right_join_result = df1.join(df2, on="id", how="right")
+print("Right Join Result:")
+right_join_result.show()
+
+# Stop Spark session
+spark.stop()
+
