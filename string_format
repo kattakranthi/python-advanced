@@ -1,1 +1,36 @@
+#using positional arguments with placeholders
+name = "David"
+age = 28
+
+formatted_string = "My name is {} and I am {} years old.".format(name, age)
+print(formatted_string)
+
+#using the .format() method
+name = "Bob"
+age = 25
+
+formatted_string = "My name is {} and I am {} years old.".format(name, age)
+print(formatted_string)
+
+#using the placeholders with .format() method 
+name = "Charlie"
+age = 22
+
+formatted_string = "My name is {0} and I am {1} years old.".format(name, age)
+print(formatted_string)
+
+#using named placeholders
+name = "Eve"
+age = 35
+
+formatted_string = "My name is {n} and I am {a} years old.".format(n=name, a=age)
+print(formatted_string)
+
+#Formatting number with precision
+pi = 3.141592653589793
+
+formatted_number = "The value of pi is {:.2f}".format(pi)
+print(formatted_number)
+
+
 
