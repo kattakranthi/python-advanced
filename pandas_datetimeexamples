@@ -1,0 +1,54 @@
+import pandas as pd
+
+# Example string representing a date
+date_string = '2023-08-20'
+
+# Convert string to datetime
+date_datetime = pd.to_datetime(date_string)
+
+print(date_datetime)
+print(type(date_datetime))
+
+
+# Example datetime object
+date_datetime = pd.to_datetime('2023-08-20')
+
+# Convert datetime to string
+date_string = date_datetime.strftime('%Y-%m-%d')
+
+print(date_string)
+print(type(date_string))
+
+# Example string series
+date_strings = ['2023-08-20', '2023-08-21', '2023-08-22']
+
+# Convert string series to datetime series
+date_series = pd.to_datetime(date_strings)
+
+print(date_series)
+print(type(date_series))
+
+# Create a DataFrame with date and time columns
+data = {'Date': ['2023-08-20', '2023-08-21', '2023-08-22'],
+        'Time': ['09:00:00', '12:30:00', '18:45:00']}
+
+df = pd.DataFrame(data)
+
+# Convert Date and Time columns to datetime objects
+df['Date'] = pd.to_datetime(df['Date'])
+df['Time'] = pd.to_datetime(df['Time'], format='%H:%M:%S').dt.time
+
+print(df)
+
+#Filtering by Date Range
+# Assume 'df' is already created with date and time columns
+
+# Filter rows within a specific date range
+start_date = pd.to_datetime('2023-08-21')
+end_date = pd.to_datetime('2023-08-22')
+
+filtered_df = df[(df['Date'] >= start_date) & (df['Date'] <= end_date)]
+
+print(filtered_df)
+
+
