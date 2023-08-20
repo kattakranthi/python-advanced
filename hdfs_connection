@@ -1,0 +1,21 @@
+from pyspark.sql import SparkSession
+
+# Create a Spark session
+spark = SparkSession.builder \
+    .appName("HDFSConnectionExample") \
+    .getOrCreate()
+# Set HDFS configuration properties
+spark.conf.set("fs.defaultFS", "hdfs://<HDFS_HOST>:<HDFS_PORT>")
+# Read data from HDFS (example: CSV file)
+hdfs_csv_path = "/path/to/input/file.csv"
+df = spark.read.csv(hdfs_csv_path, header=True, inferSchema=True)
+
+# Show the DataFrame
+df.show()
+
+# Write data to HDFS (example: Parquet file)
+hdfs_parquet_path = "/path/to/output/parquet_data"
+df.write.parquet(hdfs_parquet_path, mode="overwrite")
+
+#stop the session when you are done
+spark.stop()
