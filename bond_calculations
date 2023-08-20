@@ -1,0 +1,37 @@
+def present_value(coupon_rate, periods, discount_rate):
+    pv = 0
+    for t in range(1, periods + 1):
+        pv += (coupon_rate / (1 + discount_rate)) ** t
+    return pv
+
+def calculate_price(face_value, coupon_rate, periods, discount_rate):
+    pv_coupons = present_value(coupon_rate, periods, discount_rate)
+    pv_face_value = face_value / (1 + discount_rate) ** periods
+    price = pv_coupons + pv_face_value
+    return price
+
+def calculate_yield_to_maturity(face_value, coupon_rate, periods, market_price):
+    # Here's a simplified example:
+    epsilon = 0.0001
+    guess = 0.05
+    while True:
+        price = calculate_price(face_value, coupon_rate, periods, guess)
+        diff = price - market_price
+        if abs(diff) < epsilon:
+            return guess
+        guess += 0.0001
+
+# Bond details
+face_value = 1000
+coupon_rate = 0.06
+periods = 5
+market_price = 950
+discount_rate = 0.04  # Assume discount rate is 4%
+
+# Calculate bond price
+bond_price = calculate_price(face_value, coupon_rate, periods, discount_rate)
+print("Bond Price:", bond_price)
+
+# Calculate yield to maturity (YTM)
+bond_ytm = calculate_yield_to_maturity(face_value, coupon_rate, periods, bond_price)
+print("Yield to Maturity:", bond_ytm)
