@@ -32,5 +32,19 @@ pi = 3.141592653589793
 formatted_number = "The value of pi is {:.2f}".format(pi)
 print(formatted_number)
 
+#f-string (formatted string literals) to embed expressions inside string literals 
+
+name = "John"
+age = 30
+formatted_string = f"My name is {name} and I am {age} years old."
+print(formatted_string)
+# Output: "My name is John and I am 30 years old."
+
+pi = 3.141592653589793
+formatted_pi = f"Value of pi is approximately {pi:.2f}"
+print(formatted_pi)
+# Output: "Value of pi is approximately 3.14"
+
+
 
 
