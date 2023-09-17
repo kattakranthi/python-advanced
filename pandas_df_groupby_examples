@@ -35,3 +35,22 @@ A         X       55
           Y       45
 Name: Value, dtype: int64
 '''
+
+import pandas as pd
+
+# Sample DataFrame with security data
+data = {
+    'Security': ['Company A', 'Company A', 'Company A', 'Company A', 'Company B'],
+    'Price': [10, 10, 10, 10, 60],
+    'Shares_Outstanding': [10, 10, 10, 10, 10]
+}
+
+df = pd.DataFrame(data)
+
+
+grouped_df = df.groupby('Security').agg({'Price': 'sum', 'Shares_Outstanding': 'sum'}).reset_index()
+# Rename columns for clarity
+grouped_df.rename(columns={'Price': 'Total_Price', 'Shares_Outstanding': 'Total_Shares_Outstanding'}, inplace=True)
+
+print(grouped_df)
+
