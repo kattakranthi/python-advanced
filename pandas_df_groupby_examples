@@ -1,1 +1,37 @@
+import pandas as pd
 
+# Sample DataFrame
+data = {'Category': ['A', 'A', 'B', 'B', 'A'],
+       
+        'Value': [10, 15, 20, 25, 30]}
+df = pd.DataFrame(data)
+
+# Grouping by 'Category' and 'Type', and calculating the mean
+grouped = df.groupby(['Category'])['Value'].sum()
+
+# Output
+print(grouped)
+
+'''
+A    55
+B    45
+Name: Value, dtype: int64
+'''
+
+# Sample DataFrame
+data = {'Category': ['A', 'A', 'A', 'A', 'A'],
+        'Type': ['X', 'X', 'Y', 'Y', 'X'],
+        'Value': [10, 15, 20, 25, 30]}
+df = pd.DataFrame(data)
+
+# Grouping by 'Category' and 'Type', and calculating the mean
+grouped = df.groupby(['Category', 'Type'])['Value'].sum()
+
+# Output
+print(grouped)
+
+'''
+A         X       55
+          Y       45
+Name: Value, dtype: int64
+'''
