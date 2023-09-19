@@ -1,3 +1,70 @@
+The pct_change() method in Pandas calculates the percentage change between the current element and the previous element in a Series or DataFrame. It's commonly used in financial analysis to calculate returns or percentage changes in stock prices, financial indicators, or any time series data.
+
+The formula for calculating the percentage change for a given element at index i in a time series is:
+Percentage Change at index 1: 
+(
+105
+−
+100
+100
+)
+×
+100
+=
+5
+%
+( 
+100
+105−100
+​
+ )×100=5%
+Percentage Change at 
+�
+=
+(
+Value at 
+�
+−
+Value at 
+(
+�
+−
+1
+)
+Value at 
+(
+�
+−
+1
+)
+)
+×
+100
+Percentage Change at i=( 
+Value at (i−1)
+Value at i−Value at (i−1)
+​
+ )×100
+
+Here's how pct_change() works in Pandas:
+
+For each element at index i, it subtracts the value at index i-1 from the value at index i.
+
+It then divides this difference by the value at index i-1.
+
+Finally, it multiplies the result by 100 to express it as a percentage change.
+
+Here's an example to illustrate this calculation:
+
+Suppose you have a Series with the following data:
+
+[100, 105, 110, 108, 115]
+Using pct_change(), you get the following percentage changes:
+
+Percentage Change at index 1: 
+(105−100)/100 = 5%
+So, the pct_change() method calculates the percentage change between each element and the previous element, providing a way to measure how values in a time series change over time.
+
 The pct_change() function in Pandas is a valuable tool for various data analysis tasks, particularly in time series data and financial analysis. Here are some key reasons why it is useful:
 
 Return Calculation: In finance and investment analysis, calculating returns is a fundamental operation. pct_change() helps calculate the returns on investments, which is essential for assessing the performance of assets like stocks, bonds, and funds.
