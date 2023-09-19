@@ -33,3 +33,36 @@ print("Total Salary:", total_salary)
 # Group by department and calculate the average salary
 avg_salary_by_department = employee_df.groupBy('department').agg(avg('salary'))
 avg_salary_by_department.show()
+
+# Import necessary libraries and create a SparkSession
+from pyspark.sql import SparkSession
+
+# Create a SparkSession
+spark = SparkSession.builder.appName("DataFrameAggregation").getOrCreate()
+
+# Sample DataFrame
+data = [("Alice", "Sales", 5000),
+        ("Bob", "IT", 6000),
+        ("Charlie", "Sales", 4500),
+        ("David", "IT", 5500),
+        ("Eva", "HR", 7000)]
+
+columns = ["EmployeeName", "Department", "Salary"]
+
+df = spark.createDataFrame(data, columns)
+
+# Show the DataFrame
+df.show()
+
+from pyspark.sql.functions import count
+
+df.select(count("*").alias("TotalEmployees")).show()
+
+from pyspark.sql.functions import sum
+
+df.select(sum("Salary").alias("TotalSalary")).show()
+
+grouped_df = df.groupBy("Department").agg(sum("Salary").alias("TotalSalary"))
+grouped_df.show()
+
+#Multiple aggregrations on Grouped Data more examples 
