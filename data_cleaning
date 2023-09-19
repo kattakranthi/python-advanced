@@ -1,0 +1,3 @@
+#Clean the data by handling missing values, data type conversions, and removing duplicates 
+securities_df.dropna(inplace=True)
+securities_df['Date'] = pd.to_datetime(securities_df['Date'])
