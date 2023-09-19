@@ -1,0 +1,15 @@
+numbers = [1, 2, 3, 4, 5]
+squared_numbers = [x**2 for x in numbers]
+# Output: [1, 4, 9, 16, 25]
+
+numbers = [1, 2, 3, 4, 5]
+even_numbers = [x for x in numbers if x % 2 == 0]
+# Output: [2, 4]
+
+#List Comprehension with Function
+def square(x):
+    return x**2
+
+numbers = [1, 2, 3, 4, 5]
+squared_numbers = [square(x) for x in numbers]
+# Output: [1, 4, 9, 16, 25]
