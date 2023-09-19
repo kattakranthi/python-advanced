@@ -1,6 +1,5 @@
 #Convert Json to Python dictionary
 import json
-
 json_data = '{"name": "John", "age": 30, "city": "New York"}'
 python_dict = json.loads(json_data)
 
