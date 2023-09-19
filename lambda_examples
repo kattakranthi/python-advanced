@@ -1,1 +1,9 @@
+add = lambda x, y: x + y
+print(add(5, 3))  # Output: 8
 
+#use lambdas as arguments to other functions
+def operate_on_numbers(x, y, operation):
+    return operation(x, y)
+
+result = operate_on_numbers(5, 3, lambda a, b: a * b)
+print(result)  # Output: 15
