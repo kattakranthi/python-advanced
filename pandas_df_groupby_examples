@@ -54,3 +54,11 @@ grouped_df.rename(columns={'Price': 'Total_Price', 'Shares_Outstanding': 'Total_
 
 print(grouped_df)
 
+'''
+Output:
+Security  Total_Price  Total_Shares_Outstanding
+0  Company A           40                        40
+1  Company B           60                        10
+> 
+'''
+
