@@ -65,4 +65,30 @@ df.select(sum("Salary").alias("TotalSalary")).show()
 grouped_df = df.groupBy("Department").agg(sum("Salary").alias("TotalSalary"))
 grouped_df.show()
 
+from pyspark.sql import SparkSession
+
+# Create a SparkSession
+spark = SparkSession.builder.appName("AggregationExample").getOrCreate()
+
+# Sample data
+data = [(1, "Alice", 100),
+        (2, "Bob", 200),
+        (3, "Charlie", 150),
+        (4, "David", 300),
+        (5, "Eva", 250)]
+
+# Create a DataFrame
+df = spark.createDataFrame(data, ["id", "name", "salary"])
+
+# Aggregation example: Calculate the sum, average, and count of salaries
+aggregated_df = df.agg({"salary": "sum", "salary": "avg", "salary": "count"})
+
+# Renaming the columns for clarity
+aggregated_df = aggregated_df.withColumnRenamed("avg(salary)", "average_salary") \
+                             .withColumnRenamed("count(salary)", "count_of_employees")
+
+# Show the result
+aggregated_df.show()
+
+
 #Multiple aggregrations on Grouped Data more examples 
