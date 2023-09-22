@@ -1,3 +1,45 @@
+import pandas as pd
+
+data = {'price': [100.0, 105.5, 110.2, 115.1, 120.5]}
+df = pd.DataFrame(data)
+
+# Calculate percentage change
+df['percentage_change'] = df['price'].pct_change() * 100
+
+print(df)
+
+'''
+price  percentage_change
+0  100.0                NaN
+1  105.5           5.500000
+2  110.2           4.454976
+3  115.1           4.446461
+4  120.5           4.691573
+> 
+'''
+
+import pandas as pd
+
+data = {'price1': [100.0, 105.5, 110.2, 115.1, 120.5],
+        'price2': [50.0, 52.5, 55.1, 57.8, 60.0]}
+
+df = pd.DataFrame(data)
+
+# Calculate percentage change for both columns
+df['percentage_change_price1'] = df['price1'].pct_change() * 100
+df['percentage_change_price2'] = df['price2'].pct_change() * 100
+
+print(df)
+'''
+price1  price2  percentage_change_price1  percentage_change_price2
+0   100.0    50.0                       NaN                       NaN
+1   105.5    52.5                  5.500000                  5.000000
+2   110.2    55.1                  4.454976                  4.952381
+3   115.1    57.8                  4.446461                  4.900181
+4   120.5    60.0                  4.691573                  3.806228
+> 
+'''
+
 The pct_change() method in Pandas calculates the percentage change between the current element and the previous element in a Series or DataFrame. It's commonly used in financial analysis to calculate returns or percentage changes in stock prices, financial indicators, or any time series data.
 
 The formula for calculating the percentage change for a given element at index i in a time series is:
