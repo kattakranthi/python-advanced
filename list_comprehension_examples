@@ -1,3 +1,10 @@
+#List comprehensions are used to create lists by applying an expression to each item in an iterable.
+
+#Dictionary comprehensions are used to create dictionaries by specifying key-value pairs and applying an expression to each item in an iterable.
+
+#Set comprehensions are used to create sets by applying an expression to each item in an iterable.
+
+Generator expressions are used to create generator objects for memory-efficient iteration.
 numbers = [1, 2, 3, 4, 5]
 squared_numbers = [x**2 for x in numbers]
 # Output: [1, 4, 9, 16, 25]
