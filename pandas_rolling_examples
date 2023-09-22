@@ -1,0 +1,36 @@
+#Pandas provides a convenient method called rolling for calculating rolling statistics on time series data or any sequential data
+#We use the rolling method on the 'value' column to calculate a rolling mean over a window of 2 days. The window parameter specifies the size of the rolling window.
+import pandas as pd
+
+# Sample data as a list of dictionaries
+data = [{'date': '2023-09-01', 'value': 10},
+        {'date': '2023-09-02', 'value': 15},
+        {'date': '2023-09-03', 'value': 20},
+        {'date': '2023-09-04', 'value': 25},
+        {'date': '2023-09-05', 'value': 30}]
+
+# Create a DataFrame from the sample data
+df = pd.DataFrame(data)
+
+# Convert the 'date' column to a datetime object
+df['date'] = pd.to_datetime(df['date'])
+
+# Set the 'date' column as the index
+df.set_index('date', inplace=True)
+
+# Calculate a rolling mean over a window of 2 days
+rolling_mean = df['value'].rolling(window=2).mean()
+
+# Print the DataFrame with the rolling mean
+print(rolling_mean)
+
+'''
+date
+2023-09-01     NaN
+2023-09-02    12.5
+2023-09-03    17.5
+2023-09-04    22.5
+2023-09-05    27.5
+Name: value, dtype: float64
+
+'''
