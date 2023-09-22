@@ -22,6 +22,9 @@ df_with_salary_multiplier = df.withColumn("SalaryMultiplier", col("Salary") * 2)
 parquet_file_path = "output/"
 df_with_salary_multiplier.write.parquet(parquet_file_path)
 
+#save the dataframe as a orc format
+df_with_salary_multiplier.write.orc(output_path)
+
 # Stop the SparkSession
 spark.stop()
 
