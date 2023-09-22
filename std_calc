@@ -1,0 +1,93 @@
+Standard deviation is a statistical measure that quantifies the amount of variation or dispersion in a set of data points. In the context of stocks and financial data, standard deviation is a crucial metric used to assess the volatility or risk associated with an investment. Here's an explanation of standard deviation using stocks as an example:
+
+Example: Stock Prices
+
+Imagine you have a historical dataset of daily closing prices for a particular stock. Let's say you have collected this data for the past year, resulting in 252 daily closing prices (assuming trading occurs on all weekdays). You want to analyze the volatility of this stock over the year.
+
+Calculation of Returns:
+To calculate standard deviation, you typically start by computing the daily returns. Daily return is the percentage change in the stock price from one day to the next. It's calculated as:
+
+Daily Return
+=
+Today’s Price
+−
+Yesterday’s Price
+Yesterday’s Price
+×
+100
+Daily Return= 
+Yesterday’s Price
+Today’s Price−Yesterday’s Price
+​
+ ×100
+
+You calculate the daily return for each day in your dataset, resulting in a list of daily returns.
+
+Mean Return:
+Next, you calculate the mean (average) of these daily returns. The mean return represents the expected or average daily change in the stock price over the year.
+
+Standard Deviation:
+Now, you calculate the standard deviation of the daily returns. This measures how much the daily returns deviate from the mean return. A higher standard deviation indicates greater volatility or risk.
+
+The formula for calculating standard deviation is:
+
+Standard Deviation
+=
+1
+�
+∑
+�
+=
+1
+�
+(
+�
+�
+−
+�
+ˉ
+)
+2
+Standard Deviation= 
+N
+1
+​
+ ∑ 
+i=1
+N
+​
+ (X 
+i
+​
+ − 
+X
+ˉ
+ ) 
+2
+ 
+​
+ 
+
+�
+N is the number of data points (in this case, the number of daily returns).
+�
+�
+X 
+i
+​
+  represents each daily return.
+�
+ˉ
+X
+ˉ
+  is the mean return.
+Essentially, this formula calculates the average of the squared differences between each daily return and the mean return. The square root of this average gives you the standard deviation.
+
+Interpretation:
+Once you have the standard deviation, you can interpret it in the context of your stock's risk profile. A higher standard deviation implies greater price volatility, meaning the stock's price tends to fluctuate more widely from day to day. On the other hand, a lower standard deviation suggests more stable and predictable price movements.
+
+Investors often use standard deviation, along with other risk measures, to make informed investment decisions. For example, they may compare the standard deviations of different stocks to assess which one carries a higher risk or evaluate the standard deviation of a stock against a benchmark index to determine its relative volatility.
+
+In summary, standard deviation is a statistical measure used in finance to quantify the risk or volatility associated with stocks and other financial assets. It helps investors understand how much a stock's price tends to deviate from its average daily return and is a valuable tool for risk assessment and portfolio management.
+
+
