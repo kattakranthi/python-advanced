@@ -1,0 +1,45 @@
+class Stock:
+    def __init__(self, symbol, name, price_per_share, dividend_yield):
+        self.symbol = symbol
+        self.name = name
+        self.price_per_share = price_per_share
+        self.dividend_yield = dividend_yield
+
+    def calculate_dividend(self):
+        return self.price_per_share * (self.dividend_yield / 100)
+
+    def __str__(self):
+        return f"{self.name} ({self.symbol}) - Price per Share: ${self.price_per_share:.2f}, Dividend Yield: {self.dividend_yield}%"
+
+
+class PreferredStock(Stock):
+    def __init__(self, symbol, name, price_per_share, dividend_yield, fixed_dividend_rate):
+        super().__init__(symbol, name, price_per_share, dividend_yield)
+        self.fixed_dividend_rate = fixed_dividend_rate
+
+    def calculate_dividend(self):
+        return (self.price_per_share * self.fixed_dividend_rate) / 100
+
+    def __str__(self):
+        return super().__str__() + f", Fixed Dividend Rate: {self.fixed_dividend_rate}%"
+
+
+class CommonStock(Stock):
+    def __init__(self, symbol, name, price_per_share, dividend_yield, pe_ratio):
+        super().__init__(symbol, name, price_per_share, dividend_yield)
+        self.pe_ratio = pe_ratio
+
+    def __str__(self):
+        return super().__str__() + f", P/E Ratio: {self.pe_ratio}"
+
+
+# Example usage:
+
+preferred_stock = PreferredStock("PFD", "Preferred Inc.", 50.0, 6.0, 5.0)
+common_stock = CommonStock("COM", "Common Corp.", 40.0, 4.5, 12.0)
+
+print(preferred_stock)
+print("Preferred Stock Dividend:", preferred_stock.calculate_dividend())
+print()
+print(common_stock)
+print("Common Stock Dividend:", common_stock.calculate_dividend())
