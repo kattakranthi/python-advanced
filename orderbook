@@ -1,0 +1,101 @@
+from collections import defaultdict
+from enum import Enum
+import heapq
+
+class Side(Enum):
+    BUY = "buy"
+    SELL = "sell"
+
+class Order:
+    def __init__(self, order_id, side, price, quantity):
+        self.order_id = order_id
+        self.side = side
+        self.price = price
+        self.quantity = quantity
+
+    def __lt__(self, other):
+        # Compare orders for priority in the order book
+        if self.side == Side.BUY:
+            return self.price > other.price
+        else:
+            return self.price < other.price
+
+class OrderBook:
+    def __init__(self):
+        self.order_id_counter = 1
+        self.buy_orders = defaultdict(list)
+        self.sell_orders = defaultdict(list)
+        self.trades = []
+
+    def add_order(self, side, price, quantity):
+        order = Order(self.order_id_counter, side, price, quantity)
+        self.order_id_counter += 1
+        if side == Side.BUY:
+            heapq.heappush(self.buy_orders[price], order)
+        elif side == Side.SELL:
+            heapq.heappush(self.sell_orders[price], order)
+        self.match_orders()
+
+    def match_orders(self):
+        while (
+            self.buy_orders
+            and self.sell_orders
+            and self.buy_orders[max(self.buy_orders.keys())][0].price
+            >= self.sell_orders[min(self.sell_orders.keys())][0].price
+        ):
+            buy_order = heapq.heappop(self.buy_orders[max(self.buy_orders.keys())])
+            sell_order = heapq.heappop(self.sell_orders[min(self.sell_orders.keys())])
+            if buy_order.quantity == sell_order.quantity:
+                self.trades.append(
+                    (buy_order.order_id, sell_order.order_id, buy_order.price, buy_order.quantity)
+                )
+            elif buy_order.quantity > sell_order.quantity:
+                self.trades.append(
+                    (buy_order.order_id, sell_order.order_id, buy_order.price, sell_order.quantity)
+                )
+                buy_order.quantity -= sell_order.quantity
+                heapq.heappush(self.buy_orders[buy_order.price], buy_order)
+            else:
+                self.trades.append(
+                    (buy_order.order_id, sell_order.order_id, buy_order.price, buy_order.quantity)
+                )
+                sell_order.quantity -= buy_order.quantity
+                heapq.heappush(self.sell_orders[sell_order.price], sell_order)
+
+    def get_order_book(self):
+        return self.buy_orders, self.sell_orders
+
+    def get_trades(self):
+        return self.trades
+
+def main():
+    order_book = OrderBook()
+
+    # Example: Add some buy and sell orders
+    order_book.add_order(Side.BUY, 100, 5)
+    order_book.add_order(Side.SELL, 101, 3)
+    order_book.add_order(Side.BUY, 99, 2)
+    order_book.add_order(Side.SELL, 102, 4)
+
+    # Get the order book and trades
+    buy_orders, sell_orders = order_book.get_order_book()
+    trades = order_book.get_trades()
+
+    print("Buy Orders:")
+    for price, orders in buy_orders.items():
+        for order in orders:
+            print(f"Order ID: {order.order_id}, Price: {price}, Quantity: {order.quantity}")
+
+    print("Sell Orders:")
+    for price, orders in sell_orders.items():
+        for order in orders:
+            print(f"Order ID: {order.order_id}, Price: {price}, Quantity: {order.quantity}")
+
+    print("Trades:")
+    for trade in trades:
+        print(
+            f"Buy Order ID: {trade[0]}, Sell Order ID: {trade[1]}, Price: {trade[2]}, Quantity: {trade[3]}"
+        )
+
+if __name__ == "__main__":
+    main()
