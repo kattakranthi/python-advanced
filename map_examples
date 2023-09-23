@@ -1,0 +1,49 @@
+# Define a list of numbers
+numbers = [1, 2, 3, 4, 5]
+
+# Define a function to square a number
+def square(x):
+    return x ** 2
+
+# Use map to apply the square function to each element in the list
+squared_numbers = map(square, numbers)
+
+# Convert the result to a list (for Python 3, map returns an iterator)
+squared_numbers_list = list(squared_numbers)
+
+print(squared_numbers_list)
+# Output: [1, 4, 9, 16, 25]
+
+
+# Define a list of names
+names = ["Alice", "Bob", "Charlie"]
+
+# Define a function to convert a name to uppercase
+def uppercase_name(name):
+    return name.upper()
+
+# Use map to apply the uppercase_name function to each name in the list
+uppercase_names = map(uppercase_name, names)
+
+# Convert the result to a list
+uppercase_names_list = list(uppercase_names)
+
+print(uppercase_names_list)
+# Output: ['ALICE', 'BOB', 'CHARLIE']
+
+# Define two lists of numbers
+list1 = [1, 2, 3]
+list2 = [10, 20, 30]
+
+# Define a function to add corresponding elements from both lists
+def add(x, y):
+    return x + y
+
+# Use map to apply the add function to elements from both lists
+result = map(add, list1, list2)
+
+# Convert the result to a list
+result_list = list(result)
+
+print(result_list)
+# Output: [11, 22, 33]
