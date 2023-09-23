@@ -1,1 +1,6 @@
+#keyword arguments (kwargs) allow you to pass arguments to a function by specifying the argument name along with the value.
+def greet(name, message):
+    print(f"Hello, {name}! {message}")
 
+# Call the function using keyword arguments
+greet(name="Alice", message="How are you today?")
