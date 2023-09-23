@@ -30,3 +30,13 @@ print(pairs)
 uppercase_names = [name.upper() for name in names]
 
 print(uppercase_names)
+
+# Create a list of numbers
+numbers = [1, 2, 3, 4, 5]
+
+# Use a list comprehension to create a new list where even numbers are squared, and odd numbers are cubed
+transformed_numbers = [x**2 if x % 2 == 0 else x**3 for x in numbers]
+
+print(transformed_numbers)
+# Output: [1, 4, 27, 16, 125]
+
