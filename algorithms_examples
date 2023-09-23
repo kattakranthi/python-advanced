@@ -1,0 +1,4 @@
+#print all the numbers in a list
+list = [1,2,3,4]
+for ele in list:
+  print(ele)
