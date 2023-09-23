@@ -1,0 +1,34 @@
+import numpy as np
+import talib
+
+# Sample price data (replace with your own data)
+close_prices = np.array([100, 105, 110, 115, 120, 125, 120, 115, 110, 105])
+
+# Simple Moving Average (SMA)
+sma = talib.SMA(close_prices, timeperiod=5)
+print("Simple Moving Average (SMA):", sma)
+
+# Exponential Moving Average (EMA)
+ema = talib.EMA(close_prices, timeperiod=5)
+print("Exponential Moving Average (EMA):", ema)
+
+# Relative Strength Index (RSI)
+rsi = talib.RSI(close_prices, timeperiod=14)
+print("Relative Strength Index (RSI):", rsi)
+
+# Moving Average Convergence Divergence (MACD)
+macd, signal, _ = talib.MACD(close_prices, fastperiod=12, slowperiod=26, signalperiod=9)
+print("MACD Line:", macd)
+print("Signal Line:", signal)
+
+# Bollinger Bands
+upper, middle, lower = talib.BBANDS(close_prices, timeperiod=20)
+print("Bollinger Bands - Upper:", upper)
+print("Bollinger Bands - Middle:", middle)
+print("Bollinger Bands - Lower:", lower)
+
+# Average True Range (ATR)
+high_prices = np.array([105, 110, 112, 120, 123, 128, 131, 138, 143, 147])
+low_prices = np.array([98, 103, 109, 114, 118, 121, 126, 133, 138, 142])
+atr = talib.ATR(high_prices, low_prices, close_prices, timeperiod=14)
+print("Average True Range (ATR):", atr)
