@@ -52,3 +52,23 @@ if __name__ == "__main__":
 
     # Print the total portfolio value
     print(f"Total Portfolio Value: ${portfolio_value:.2f}")
+
+import pandas as pd
+
+# Create a DataFrame for Asset Classes
+data = {
+    "AssetClassID": [1, 2, 3, 4],
+    "AssetClassName": ["Equity", "Fixed Income", "Real Estate", "Commodities"],
+    "Description": [
+        "Ownership shares in a company or corporation.",
+        "Debt securities with fixed interest payments.",
+        "Investments in physical properties like land or buildings.",
+        "Physical goods such as gold, oil, or agricultural products."
+    ],
+    "RiskLevel": ["High", "Low", "Moderate", "Varied"]
+}
+
+asset_class_df = pd.DataFrame(data)
+
+print(asset_class_df)
+
