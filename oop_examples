@@ -1,1 +1,35 @@
+# Define a base class "Shape"
+class Shape:
+    def __init__(self, color):
+        self.color = color
+
+    def area(self):
+        pass
+
+    def perimeter(self):
+        pass
+
+# Define a subclass "Circle" that inherits from "Shape"
+class Circle(Shape):
+    def __init__(self, color, radius):
+        # Call the constructor of the base class
+        super().__init__(color)
+        self.radius = radius
+
+    def area(self):
+        return 3.1415 * self.radius * self.radius
+
+    def perimeter(self):
+        return 2 * 3.1415 * self.radius
+
+# Create instances of Shape and Circle
+shape = Shape("Red")
+circle = Circle("Blue", 5)
+
+# Access properties and methods
+print(f"Shape color: {shape.color}")
+print(f"Circle color: {circle.color}")
+print(f"Circle radius: {circle.radius}")
+print(f"Circle area: {circle.area()}")
+print(f"Circle perimeter: {circle.perimeter()}")
 
