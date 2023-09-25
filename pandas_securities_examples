@@ -1,0 +1,26 @@
+import pandas as pd
+
+data = {
+    "PositionID": [101, 202, 303, 404, 505],
+    "SecurityID": ["AAPL", "US10YR2025", "SPY_Dec2023_Call_450", "GOOGL", "TSLA"],
+    "PositionName": ["Tech Stock", "US Treasury Bond", "Call Option", "Tech Stock", "Electric Vehicle Stock"],
+    "AccountID": ["A101", "A202", "A303", "A404", "A505"],
+    "AssetClass": ["Equity", "Fixed Income", "Derivative", "Equity", "Equity"],
+    "Quantity": [1000, 50, 10, 300, 200],
+    "PurchasePrice": [150.0, 1000.0, 5.0, 2800.0, 600.0]
+}
+
+df = pd.DataFrame(data)
+
+print(df)
+'''
+PositionID            SecurityID  ... Quantity PurchasePrice
+0         101                  AAPL  ...     1000         150.0
+1         202            US10YR2025  ...       50        1000.0
+2         303  SPY_Dec2023_Call_450  ...       10           5.0
+3         404                 GOOGL  ...      300        2800.0
+4         505                  TSLA  ...      200         600.0
+
+[5 rows x 7 columns]
+
+'''
