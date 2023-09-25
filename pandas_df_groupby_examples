@@ -62,3 +62,52 @@ Security  Total_Price  Total_Shares_Outstanding
 > 
 '''
 
+import pandas as pd
+
+# Sample DataFrame
+data = {'Category': ['A', 'A', 'B', 'B', 'A', 'C'],
+        'Subcategory': ['X', 'Y', 'X', 'Y', 'X', 'Z'],
+        'Price': [10, 15, 20, 25, 12, 30]}
+
+df = pd.DataFrame(data)
+
+# Group by multiple columns and calculate the average price
+result = df.groupby(['Category', 'Subcategory'])['Price'].mean()
+
+print(result)
+'''
+Category  Subcategory
+A         X              11.0
+          Y              15.0
+B         X              20.0
+          Y              25.0
+C         Z              30.0
+Name: Price, dtype: float64
+> 
+'''
+
+import pandas as pd
+
+# Sample DataFrame with stock data
+data = {'Stock Symbol': ['AAPL', 'GOOGL', 'AAPL', 'MSFT', 'GOOGL'],
+        'Outstanding Shares': [5000, 1000, 5500, 6000, 1100],
+        'Stock Price': [150, 2700, 155, 300, 2725]}
+
+df = pd.DataFrame(data)
+
+# Calculate market capitalization for each stock
+df['Market Cap'] = df['Outstanding Shares'] * df['Stock Price']
+
+# Group by stock symbol and sum the market capitalization
+result = df.groupby('Stock Symbol')['Market Cap'].sum()
+
+print(result)
+
+'''
+Stock Symbol
+AAPL     1602500
+GOOGL    5697500
+MSFT     1800000
+Name: Market Cap, dtype: int64
+> 
+'''
