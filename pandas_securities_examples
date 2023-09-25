@@ -24,3 +24,24 @@ PositionID            SecurityID  ... Quantity PurchasePrice
 [5 rows x 7 columns]
 
 '''
+
+import pandas as pd
+
+data = {
+    "PositionID": [101, 102, 103, 104, 105],
+    "SecurityID": ["AAPL", "GOOGL", "MSFT", "TSLA", "AMZN"],
+    "SecurityName": ["Apple Inc.", "Alphabet Inc.", "Microsoft Corporation", "Tesla, Inc.", "Amazon.com, Inc."],
+    "AssetClass": ["Equity", "Equity", "Equity", "Equity", "Equity"],
+    "Quantity": [1000, 500, 800, 300, 600],
+    "PurchasePrice": [150.0, 2800.0, 300.0, 650.0, 3200.0],
+    "MarketPrice": [155.0, 2850.0, 310.0, 700.0, 3300.0],
+    "MarketValue": [155000.0, 1425000.0, 248000.0, 210000.0, 1980000.0],
+    "Sector": ["Technology", "Technology", "Technology", "Automotive", "E-commerce"],
+    "Industry": ["Electronics", "Internet Services", "Software", "Automobile", "Online Retail"],
+    "PurchaseDate": ["2021-01-15", "2020-05-20", "2022-03-10", "2021-08-05", "2020-12-01"]
+}
+
+df = pd.DataFrame(data)
+
+print(df)
+
