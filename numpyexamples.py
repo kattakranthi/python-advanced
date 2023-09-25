@@ -82,3 +82,47 @@ Transposed Matrix:
  [2 5]
  [3 6]]
 '''
+import numpy as np 
+
+data = np.array([1, 2, 3, 4, 5])
+
+# Mean and standard deviation
+mean = np.mean(data)
+std_dev = np.std(data)
+
+# Sum and product of array elements
+total = np.sum(data)
+product = np.prod(data)
+
+# Sorting
+sorted_data = np.sort(data)
+
+'''
+3.0
+1.4142135623730951
+15
+120
+[1 2 3 4 5]
+> 
+'''
+
+'''
+NumPy broadcasting is a powerful feature that allows NumPy to perform element-wise operations on arrays of different shapes and sizes, without the need for explicitly creating larger arrays to match their shapes. Broadcasting makes it more convenient to work with arrays of different dimensions and simplifies many operations, making your code cleaner and more efficient.
+'''
+import numpy as np
+
+A = np.array([[1, 2, 3],
+              [4, 5, 6]])
+
+B = np.array([10, 20, 30])
+
+result = A + B
+
+# Broadcasting expands B to match the shape of A:
+# B becomes [[10, 20, 30], [10, 20, 30]]
+# Then, element-wise addition is performed.
+'''
+[[11 22 33]
+ [14 25 36]]
+
+'''
