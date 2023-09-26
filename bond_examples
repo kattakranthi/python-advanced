@@ -1,0 +1,27 @@
+import pandas as pd
+
+# Create a DataFrame representing a bond portfolio
+data = {
+    'Bond': ['Bond A', 'Bond B', 'Bond C'],
+    'Face Value': [1000, 1500, 800],
+    'Coupon Rate': [0.04, 0.05, 0.03],
+    'Maturity (Years)': [5, 7, 3],
+    'Current Yield': [0.045, 0.048, 0.035]
+}
+
+bond_portfolio = pd.DataFrame(data)
+
+# Calculate total portfolio value
+bond_portfolio['Portfolio Value'] = bond_portfolio['Face Value'] * (1 + bond_portfolio['Current Yield'])
+
+# Calculate portfolio statistics
+portfolio_value = bond_portfolio['Portfolio Value'].sum()
+average_yield = (bond_portfolio['Portfolio Value'] * bond_portfolio['Current Yield']).sum() / portfolio_value
+
+print(f"Total Portfolio Value: ${portfolio_value:.2f}")
+print(f"Average Yield: {average_yield * 100:.2f}%")
+
+'''
+Total Portfolio Value: $3445.00
+Average Yield: 4.40%
+'''
