@@ -1,0 +1,29 @@
+# Import necessary libraries
+import yfinance as yf
+
+# Define the stock symbol and date range
+stock_symbol = "AAPL"  # Apple Inc. as an example
+start_date = "2020-01-01"
+end_date = "2021-12-31"
+
+# Fetch historical stock data
+df = yf.download(stock_symbol, start=start_date, end=end_date)
+
+# Calculate a simple moving average (SMA)
+df['SMA'] = df['Close'].rolling(window=50).mean()
+
+# Create a function to determine when to enter a long position
+def enter_long_position(data):
+    if data['Close'] > data['SMA']:
+        return 1  # Buy signal
+    else:
+        return 0  # No signal
+
+# Apply the function to the DataFrame
+df['Signal'] = df.apply(enter_long_position, axis=1)
+
+# Filter rows where a long position should be taken
+long_positions = df[df['Signal'] == 1]
+
+# Print the long positions
+print(long_positions)
