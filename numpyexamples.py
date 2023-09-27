@@ -126,3 +126,26 @@ result = A + B
  [14 25 36]]
 
 '''
+
+#Scalar array Broadcasting
+#The key idea behind broadcasting is to extend smaller arrays to match the shape of larger arrays by implicitly replicating their values along the appropriate dimensions
+import numpy as np
+
+scalar = 5
+array = np.array([1, 2, 3, 4])
+result = scalar * array  
+print(result)
+'''
+[5,10,15,20]
+'''
+
+import numpy as np
+array1 = np.array([[1, 2], [3, 4]])
+array2 = np.array([2, 2])
+result = array1 * array2  # Broadcasts array2 to [[2, 2], [2, 2]a]
+print(result)
+'''
+[[2 4]
+ [6 8]]
+
+'''
