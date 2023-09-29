@@ -51,4 +51,19 @@ filtered_df = df[(df['Date'] >= start_date) & (df['Date'] <= end_date)]
 
 print(filtered_df)
 
+#generate a range of dates using pd.date_range()
 
+import pandas as pd
+
+# Creating a date range with default daily frequency
+date_range = pd.date_range(start='2023-09-01', end='2023-09-10')
+print(date_range)
+
+'''
+output:
+DatetimeIndex(['2023-09-01', '2023-09-02', '2023-09-03', '2023-09-04',
+               '2023-09-05', '2023-09-06', '2023-09-07', '2023-09-08',
+               '2023-09-09', '2023-09-10'],
+              dtype='datetime64[ns]', freq='D')
+
+'''
