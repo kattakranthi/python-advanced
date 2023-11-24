@@ -1,0 +1,24 @@
+/***
+Stop order  --- Person A owns 100 AAPL stocks of worth $1000. Person A donot want to take risk if the price drops below $950.
+Person A puts the stop order. The trade gets executed only if the price drops to $950.
+***/
+class Stock:
+    def __init__(self, symbol, price):
+        self.symbol = symbol
+        self.price = price
+
+def execute_stop_order(stock, stop_price):
+    if stock.price <= stop_price:
+        print(f"Executing stop order for {stock.symbol} at {stop_price}")
+        # Place your order execution logic here
+
+# Example usage
+if __name__ == "__main__":
+    # Create a stock instance
+    apple_stock = Stock(symbol="AAPL", price=150.0)
+
+    # Set a stop price
+    stop_price = 145.0
+
+    # Check if the current price triggers the stop order
+    execute_stop_order(apple_stock, stop_price)
