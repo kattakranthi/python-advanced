@@ -1,0 +1,23 @@
+'''
+Median -- A list of array numbers is given. A Median is sum of all the list of numbers and length of the numbers
+Standard deviation -- Standard Deviation is how deviate is the numbers from median of the number.
+Variation --- get the difference of each value from the median, square all the values and add . And divide that value with total length of values
+Standard deviation is a square root of variation.
+'''
+def calculate_mean(data):
+    return sum(data) / len(data)
+
+def calculate_standard_deviation(data):
+    mean = calculate_mean(data)
+    variance = sum((x - mean) ** 2 for x in data) / len(data)
+    std_dev = variance ** 0.5
+    return std_dev
+
+# Example data
+data = [2, 4, 4, 4, 5, 5, 7, 9]
+
+# Calculate the standard deviation
+std_dev = calculate_standard_deviation(data)
+
+# Print the result
+print(f"Standard Deviation: {std_dev}")
