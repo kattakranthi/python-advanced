@@ -1,0 +1,33 @@
+'''
+Load excel file and validate the excel file 
+'''
+import pandas as pd
+from schema import Schema, And, Use
+
+# Define a schema for validation
+data_schema = Schema([
+    {
+        'Column1': And(str, len),
+        'Column2': And(Use(float), lambda n: 0 <= n <= 100),
+        'Column3': And(str, lambda s: s.lower() in ['category1', 'category2', 'category3'])
+    }
+])
+
+def read_and_validate_excel(file_path):
+    # Read Excel file into a DataFrame
+    try:
+        df = pd.read_excel(file_path)
+    except Exception as e:
+        print(f"Error reading Excel file: {e}")
+        return
+
+    # Validate DataFrame against the defined schema
+    try:
+        data_schema.validate(df.to_dict(orient='records'))
+        print("Validation successful.")
+    except Exception as e:
+        print(f"Validation failed: {e}")
+
+# Example usage
+excel_file_path = 'path/to/your/excel/file.xlsx'
+read_and_validate_excel(excel_file_path)
