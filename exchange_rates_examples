@@ -1,0 +1,20 @@
+'''
+In forex trading, the exchange rate expresses the relative value of one currency to another. Specifically:
+
+If the exchange rate is given as USD/EUR = 1.1, it means that 1 US Dollar is equal to 1.1 Euros.
+
+Conversely, if the exchange rate were EUR/USD = 0.9091, it would mean that 1 Euro is equivalent to 0.9091 US Dollars.
+So, if you have 1 US Dollar and the exchange rate is 1.1, you would get 1.1 Euros in return. Exchange rates are used to convert the value of one currency into another and are expressed as a ratio of the two currencies.
+'''
+
+def convert_usd_to_eur(usd_amount, exchange_rate):
+    eur_amount = usd_amount * exchange_rate
+    return eur_amount
+
+# Example usage
+usd_amount = 100
+exchange_rate_usd_to_eur = 1.1
+
+eur_amount = convert_usd_to_eur(usd_amount, exchange_rate_usd_to_eur)
+
+print(f"{usd_amount} USD is equal to {eur_amount:.2f} Euros at an exchange rate of {exchange_rate_usd_to_eur}.")
