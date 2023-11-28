@@ -1,1 +1,63 @@
+'''
+In the context of Python, "UDF" typically stands for User-Defined Function. 
+A User-Defined Function is a custom function created by the user to perform a specific task.
+Here are some examples of Python UDFs:
+'''
+#Simple Arithemetic udf
+def add_numbers(a, b):
+    return a + b
+
+result = add_numbers(5, 3)
+print(f"Result of addition: {result}")
+
+#String manipulation UDF
+def reverse_string(input_str):
+    return input_str[::-1]
+
+original_string = "Python"
+reversed_string = reverse_string(original_string)
+print(f"Original String: {original_string}")
+print(f"Reversed String: {reversed_string}")
+
+#List processing UDF
+def find_max_value(input_list):
+    if not input_list:
+        return None
+    return max(input_list)
+
+numbers = [3, 7, 2, 9, 1]
+max_value = find_max_value(numbers)
+print(f"List: {numbers}")
+print(f"Max Value: {max_value}")
+
+#customized UDF with Default Parameter
+def greet_user(name, greeting="Hello"):
+    return f"{greeting}, {name}!"
+
+user_greeting = greet_user("Alice")
+print(user_greeting)
+
+custom_greeting = greet_user("Bob", "Good morning")
+print(custom_greeting)
+
+#conditional UDF
+def is_even(number):
+    return number % 2 == 0
+
+num = 8
+if is_even(num):
+    print(f"{num} is even.")
+else:
+    print(f"{num} is odd.")
+
+#UDF with variable number of arguments
+
+def is_even(number):
+    return number % 2 == 0
+
+num = 8
+if is_even(num):
+    print(f"{num} is even.")
+else:
+    print(f"{num} is odd.")
 
