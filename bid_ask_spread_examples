@@ -1,0 +1,16 @@
+# Example Bid and Ask Prices
+bid_prices = [100.50, 100.45, 100.40]
+ask_prices = [101.00, 101.05, 101.10]
+
+# Best Bid and Ask Prices
+best_bid = max(bid_prices)
+best_ask = min(ask_prices)
+
+# Bid-Ask Spread Calculation
+bid_ask_spread = best_ask - best_bid
+
+# Display Results
+print("Best Bid Price:", best_bid)
+print("Best Ask Price:", best_ask)
+print("Bid-Ask Spread:", bid_ask_spread)
+
