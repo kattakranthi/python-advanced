@@ -18,3 +18,55 @@ exchange_rate_usd_to_eur = 1.1
 eur_amount = convert_usd_to_eur(usd_amount, exchange_rate_usd_to_eur)
 
 print(f"{usd_amount} USD is equal to {eur_amount:.2f} Euros at an exchange rate of {exchange_rate_usd_to_eur}.")
+
+
+#forex-library can be used to to get exchange rates
+from forex_python.converter import CurrencyRates
+
+# Create a CurrencyRates object
+c = CurrencyRates()
+
+# Define the currency pair (base currency to quote currency)
+base_currency = "EUR"
+quote_currency = "USD"
+
+# Get the exchange rate
+exchange_rate = c.get_rate(base_currency, quote_currency)
+
+# Display Information
+print(f"Currency Pair: {base_currency}/{quote_currency}")
+print(f"Exchange Rate: 1 {base_currency} = {exchange_rate} {quote_currency}")
+
+
+#currency-conversion
+from forex_python.converter import CurrencyRates
+
+def convert_currency(amount, from_currency, to_currency):
+    c = CurrencyRates()
+    exchange_rate = c.get_rate(from_currency, to_currency)
+    converted_amount = amount * exchange_rate
+    return converted_amount
+
+amount_in_usd = 100
+converted_amount = convert_currency(amount_in_usd, "USD", "EUR")
+print(f"{amount_in_usd} USD is equivalent to {converted_amount:.2f} EUR")
+
+#Retrieve historical exchange rates and analyze trends
+from datetime import datetime, timedelta
+from forex_python.converter import CurrencyRates
+
+def get_historical_rates(base_currency, quote_currency, start_date, end_date):
+    c = CurrencyRates()
+    date_range = [start_date + timedelta(days=x) for x in range((end_date - start_date).days + 1)]
+    rates = [c.get_rate(base_currency, quote_currency, date) for date in date_range]
+    return date_range, rates
+
+base_currency = "EUR"
+quote_currency = "USD"
+start_date = datetime(2023, 1, 1)
+end_date = datetime(2023, 1, 31)
+
+dates, historical_rates = get_historical_rates(base_currency, quote_currency, start_date, end_date)
+
+for date, rate in zip(dates, historical_rates):
+    print(f"{date.strftime('%Y-%m-%d')}: {rate:.4f}")
