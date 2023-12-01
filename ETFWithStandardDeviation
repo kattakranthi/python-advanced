@@ -1,0 +1,31 @@
+import pandas as pd
+import numpy as np
+import yfinance as yf  
+
+class ETFWithStandardDeviation:
+    def __init__(self, name, ticker, start_date, end_date):
+        self.name = name
+        self.ticker = ticker
+        self.start_date = start_date
+        self.end_date = end_date
+        self.prices = self.get_historical_prices()
+
+    def get_historical_prices(self):
+        # Using Yahoo Finance API to get historical price data
+        df = yf.download(self.ticker, start=self.start_date, end=self.end_date)
+        return df['Adj Close']
+
+    def calculate_standard_deviation(self):
+        returns = self.prices.pct_change().dropna()
+        volatility = np.std(returns) * np.sqrt(252)  # Annualized volatility (assuming 252 trading days)
+        return volatility
+
+# Example usage
+if __name__ == "__main__":
+    start_date = "2022-01-01"
+    end_date = "2023-01-01"
+    
+    my_etf_with_std_dev = ETFWithStandardDeviation(name="Example ETF", ticker="AAPL", start_date=start_date, end_date=end_date)
+    std_dev_result = my_etf_with_std_dev.calculate_standard_deviation()
+
+    print(f"The annualized standard deviation of {my_etf_with_std_dev.name} is: {std_dev_result:.2%}")
