@@ -1,0 +1,21 @@
+def present_value(future_value, interest_rate, periods):
+    """
+    Calculate the present value (PV) of a future sum of money.
+
+    Parameters:
+    - future_value: the future value of the money
+    - interest_rate: the interest rate per period
+    - periods: the number of periods
+
+    Returns:
+    - present_value: the present value of the future sum
+    """
+    present_value = future_value / (1 + interest_rate)**periods
+    return present_value
+
+# Example usage
+future_value_example = 1000  # Replace with the actual future value
+interest_rate_example = 0.05  # Replace with the actual interest rate per period
+periods_example = 3  # Replace with the actual number of periods
+pv_result = present_value(future_value_example, interest_rate_example, periods_example)
+print(f"The present value is: ${pv_result:.2f}")
