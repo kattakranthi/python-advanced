@@ -1,0 +1,41 @@
+class ETF:
+    def __init__(self, name, ticker):
+        self.name = name
+        self.ticker = ticker
+        self.holdings = {}  # Dictionary to store the fund's holdings (symbol: quantity)
+        self.price_per_share = 100  # Initial price per share
+
+    def add_holding(self, symbol, quantity):
+        if symbol in self.holdings:
+            self.holdings[symbol] += quantity
+        else:
+            self.holdings[symbol] = quantity
+
+    def remove_holding(self, symbol, quantity):
+        if symbol in self.holdings:
+            if quantity >= self.holdings[symbol]:
+                del self.holdings[symbol]
+            else:
+                self.holdings[symbol] -= quantity
+
+    def calculate_nav(self):
+        total_assets = sum(self.get_holding_value(symbol) for symbol in self.holdings)
+        return total_assets
+
+    def get_holding_value(self, symbol):
+        # For simplicity, assuming a fixed price per share for all holdings
+        return self.holdings.get(symbol, 0) * self.price_per_share
+
+# Example usage
+if __name__ == "__main__":
+    # Creating an instance of the ETF class
+    my_etf = ETF(name="Tech ETF", ticker="TEC")
+
+    # Adding holdings
+    my_etf.add_holding("AAPL", 10)
+    my_etf.add_holding("GOOGL", 5)
+    my_etf.add_holding("MSFT", 8)
+
+    # Calculating and printing the NAV
+    nav_result = my_etf.calculate_nav()
+    print(f"The Net Asset Value (NAV) of {my_etf.name} is: ${nav_result:.2f}")
