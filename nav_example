@@ -1,0 +1,19 @@
+class InvestmentFund:
+    def __init__(self, name, total_assets, total_liabilities, num_shares_outstanding):
+        self.name = name
+        self.total_assets = total_assets
+        self.total_liabilities = total_liabilities
+        self.num_shares_outstanding = num_shares_outstanding
+
+    def calculate_nav(self):
+        nav = (self.total_assets - self.total_liabilities) / self.num_shares_outstanding
+        return nav
+
+# Example usage
+if __name__ == "__main__":
+    # Creating an instance of the InvestmentFund class
+    my_fund = InvestmentFund(name="My Fund", total_assets=1000000, total_liabilities=50000, num_shares_outstanding=100000)
+
+    # Calculating and printing the NAV
+    nav_result = my_fund.calculate_nav()
+    print(f"The Net Asset Value (NAV) of {my_fund.name} is: ${nav_result:.2f}")
