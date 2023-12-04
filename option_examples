@@ -1,0 +1,33 @@
+class Option:
+    def __init__(self, option_type, underlying_price, strike_price, premium):
+        self.option_type = option_type  # "call" or "put"
+        self.underlying_price = underlying_price
+        self.strike_price = strike_price
+        self.premium = premium
+
+    def calculate_profit_loss(self, final_price):
+        if self.option_type == "call":
+            # Calculate profit/loss for a call option
+            return max(0, final_price - self.strike_price) - self.premium
+        elif self.option_type == "put":
+            # Calculate profit/loss for a put option
+            return max(0, self.strike_price - final_price) - self.premium
+        else:
+            raise ValueError("Invalid option type")
+
+# Example usage:
+# Let's say you buy a call option for a stock with a strike price of $50 and a premium of $3.
+call_option = Option(option_type="call", underlying_price=48, strike_price=50, premium=3)
+
+# If the stock price at expiration is $55, calculate the profit/loss.
+final_stock_price = 55
+profit_loss = call_option.calculate_profit_loss(final_stock_price)
+print(f"Profit/Loss for the call option: ${profit_loss}")
+
+# Now, let's consider a put option with a strike price of $45 and a premium of $2.
+put_option = Option(option_type="put", underlying_price=48, strike_price=45, premium=2)
+
+# If the stock price at expiration is $40, calculate the profit/loss.
+final_stock_price_put = 40
+profit_loss_put = put_option.calculate_profit_loss(final_stock_price_put)
+print(f"Profit/Loss for the put option: ${profit_loss_put}")
