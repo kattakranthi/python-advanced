@@ -1,0 +1,23 @@
+def calculate_daily_returns(prices):
+    """
+    Calculate daily returns from daily closing prices.
+
+    Parameters:
+    - prices: List or array of daily closing prices.
+
+    Returns:
+    - List of daily returns.
+    """
+    returns = []
+    for i in range(1, len(prices)):
+        daily_return = (prices[i] - prices[i - 1]) / prices[i - 1]
+        returns.append(daily_return)
+    return returns
+
+# Example usage:
+# Daily closing prices of Apple stock (simplified example)
+apple_stock_prices = [150.0, 152.0, 151.5, 153.5, 152.0, 151.0, 149.5, 151.5, 151.0, 153.0]
+
+# Calculate daily returns
+apple_stock_returns = calculate_daily_returns(apple_stock_prices)
+print("Daily Returns:", apple_stock_returns)
