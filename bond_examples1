@@ -1,0 +1,32 @@
+class Bond:
+    def __init__(self, face_value, coupon_rate, years_to_maturity):
+        self.face_value = face_value
+        self.coupon_rate = coupon_rate
+        self.years_to_maturity = years_to_maturity
+
+    def calculate_price(self, discount_rate):
+        # Calculate the present value of future cash flows to determine the bond price
+        present_value = 0
+        for t in range(1, self.years_to_maturity + 1):
+            present_value += self.coupon_rate * self.face_value / (1 + discount_rate) ** t
+
+        # Add the present value of the face value at maturity
+        present_value += self.face_value / (1 + discount_rate) ** self.years_to_maturity
+
+        return present_value
+
+# Example usage:
+# Create a bond with a face value of $1,000, a coupon rate of 5%, and 5 years to maturity
+my_bond = Bond(face_value=1000, coupon_rate=0.05, years_to_maturity=5)
+
+# Calculate the initial bond price with a discount rate of 3%
+initial_price = my_bond.calculate_price(discount_rate=0.03)
+print(f"Initial Bond Price: ${initial_price:.2f}")
+
+# Calculate the bond price when interest rates increase to 4%
+price_when_rates_increase = my_bond.calculate_price(discount_rate=0.04)
+print(f"Bond Price when Rates Increase: ${price_when_rates_increase:.2f}")
+
+# Calculate the bond price when interest rates decrease to 2%
+price_when_rates_decrease = my_bond.calculate_price(discount_rate=0.02)
+print(f"Bond Price when Rates Decrease: ${price_when_rates_decrease:.2f}")
